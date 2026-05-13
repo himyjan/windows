@@ -24,7 +24,7 @@ parseVersion() {
     VERSION="${VERSION:1:-1}"
   fi
 
-  VERSION=$(expr "$VERSION" : "^\ *\(.*[^ ]\)\ *$")
+  [ -n "$VERSION" ] && VERSION=$(expr "$VERSION" : "^\ *\(.*[^ ]\)\ *$")
   [ -z "$VERSION" ] && VERSION="win11"
 
   case "${VERSION,,}" in
@@ -138,7 +138,7 @@ parseVersion() {
     "nano11" | "nano 11" )
       VERSION="nano11"
       [ -z "$DETECTED" ] && DETECTED="win11x64"
-      ;;      
+      ;;
     "core11" | "core 11" )
       VERSION="core11"
       [ -z "$DETECTED" ] && DETECTED="win11x64"
